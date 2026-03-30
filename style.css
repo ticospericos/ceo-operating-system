@@ -1,60 +1,10 @@
-/* Reset default styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Body styling */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #121212;
-    color: #f0f0f0;
+    background-color: #f0f3f5;
+    margin: 0;
     padding: 20px;
 }
 
-/* Grid layout for main application */
-div.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-/* Card design */
-.card {
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-content {
-    padding: 16px;
-}
-
-/* Responsive design adjustments */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    .card {
-        margin: 5px;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Example class for fade-in effect */
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+h1 {
+    color: #333;
 }
