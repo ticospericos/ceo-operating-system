@@ -1,0 +1,110 @@
+index.html
+style.css
+app.js
+manifest.json
+sw.js
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CEO OS</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+  <h1>CEO OS</h1>
+
+  <div class="card">
+    <h2>🔥 Streak</h2>
+    <p id="streak">0 días</p>
+  </div>
+
+  <div class="card">
+    <h2>💰 Dinero generado</h2>
+    <p id="money">$0</p>
+  </div>
+
+  <div class="card">
+    <h2>✅ Tareas</h2>
+    <button onclick="addTask()">+ Agregar</button>
+    <ul id="tasks"></ul>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont;
+  background: #0d0d0d;
+  color: white;
+}
+
+.app {
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,255,200,0.1);
+}
+
+button {
+  background: #00ffcc;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+let streak = localStorage.getItem("streak") || 0;
+let money = localStorage.getItem("money") || 0;
+
+document.getElementById("streak").innerText = streak + " días";
+document.getElementById("money").innerText = "$" + money;
+
+function addTask() {
+  let task = prompt("Nueva tarea:");
+  if (!task) return;
+
+  let li = document.createElement("li");
+  li.innerText = task;
+
+  li.onclick = () => {
+    li.style.textDecoration = "line-through";
+    streak++;
+    money = parseInt(money) + 10;
+
+    localStorage.setItem("streak", streak);
+    localStorage.setItem("money", money);
+
+    location.reload();
+  };
+
+  document.getElementById("tasks").appendChild(li);
+}
+self.addEventListener("install", e => {
+  console.log("App instalada");
+});
